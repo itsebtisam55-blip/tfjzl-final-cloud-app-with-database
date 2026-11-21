@@ -23,11 +23,12 @@ class CourseAdmin(admin.ModelAdmin):
     list_filter = ['pub_date']
     search_fields = ['name', 'description']
 
-
 class QuestionAdmin(admin.ModelAdmin):
     inlines = [ChoiceInline]
-    list_display = ['content']
+    list_display = ['question_text']
 
+    def question_text(self, obj):
+        return obj.content
 
 class LessonAdmin(admin.ModelAdmin):
     list_display = ['title']
